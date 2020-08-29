@@ -64,6 +64,7 @@ void mouse_event(struct nk_rect   bounds,
 
 
 
+
 static void error_callback(int e, const char *d)
 {printf("Error %d: %s\n", e, d);}
 
@@ -102,32 +103,33 @@ int main(void)
     nk_glfw3_font_stash_begin(&glfw, &atlas);
     nk_glfw3_font_stash_end(&glfw);}
 
+	struct nk_rect space;
+
     while (!glfwWindowShouldClose(win))
     {
-		keyboard_event(&ctx->input);
-		
-        /* Input */
+	/* Input */
+	keyboard_event(&ctx->input);
+	mouse_event(space, &ctx->input);
+	    
         glfwPollEvents();
         nk_glfw3_new_frame(&glfw);
-		static int motion_X = 0;
-        /* GUI */
+	static int motion_X = 0;
+        
+	/* GUI */
         if (nk_begin(ctx, "Anything window", nk_rect(0, 0, win_width, win_height), 0))
         {
             nk_layout_row_dynamic(ctx, 120, 1);
 
             struct nk_command_buffer*canvas = nk_window_get_canvas(ctx);
 
-
 			if (nk_widget_is_hovered(ctx))
 				printf("Yey. The widget was hovered!!\n");
 			else
 				printf("Not hovered\n");
 
-			struct nk_rect space;
 			nk_widget(&space, ctx);
 		
 
-			mouse_event(space, &ctx->input);
 			
 			nk_fill_rect(canvas, space, 2, nk_rgb(160, 160, 160));
         
