@@ -42,7 +42,7 @@ void mouse_event(struct nk_rect   bounds,
 				 struct nk_input* in)
 {
 	if (in->mouse.buttons[NK_BUTTON_LEFT].down                    &&
-		in->mouse.buttons[NK_BUTTON_LEFT].clicked                 &&  
+	    in->mouse.buttons[NK_BUTTON_LEFT].clicked                 &&  
 	   (in->mouse.pos.x > bounds.x && in->mouse.pos.x < bounds.w) && 
 	   (in->mouse.pos.y > bounds.y && in->mouse.pos.y < bounds.h))
 				
@@ -51,9 +51,9 @@ void mouse_event(struct nk_rect   bounds,
 		printf("y-coord clicked = %f\n", in->mouse.pos.y);
 	}
 	else if (in->mouse.buttons[NK_BUTTON_RIGHT].down                    &&
-		in->mouse.buttons[NK_BUTTON_RIGHT].clicked                 &&  
-	   (in->mouse.pos.x > bounds.x && in->mouse.pos.x < bounds.w) && 
-	   (in->mouse.pos.y > bounds.y && in->mouse.pos.y < bounds.h))
+		 in->mouse.buttons[NK_BUTTON_RIGHT].clicked                 &&
+		 (in->mouse.pos.x > bounds.x && in->mouse.pos.x < bounds.w) &&
+		 (in->mouse.pos.y > bounds.y && in->mouse.pos.y < bounds.h))
 				
 	{
 		printf("Messi\n");
